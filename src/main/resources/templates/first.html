@@ -1,0 +1,145 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Login</title>-->
+
+<!--  <h1>Login</h1>-->
+<!--  <input type="text" id="username" placeholder="Username">-->
+<!--  <br>-->
+<!--  <input type="password" id="password" placeholder="Password">-->
+
+<!--  <br>-->
+<!--    <button onclick="login()">Login</button>-->
+<!--    <button onclick="register()">Register</button>-->
+
+
+<!--</head>-->
+
+
+<!--<body>-->
+
+<!--</body>-->
+
+<!--<script>-->
+<!--  function login() {-->
+<!--    var username = document.getElementById("username").value;-->
+<!--    var password = document.getElementById("password").value;-->
+<!--    // Post传给后端 /first-->
+<!--    var xhr = new XMLHttpRequest();-->
+<!--    xhr.open("POST", "/first", true);-->
+<!--    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");-->
+<!--      xhr.send(JSON.stringify({-->
+<!--          username: username,-->
+<!--          password: password-->
+<!--      }));// 后端如何接收-->
+<!--      xhr.onreadystatechange = function () {-->
+<!--          if (xhr.readyState === 4 && xhr.status === 200) {-->
+
+<!--              var response = JSON.parse(xhr.responseText);-->
+<!--              if (response.code === 200) {-->
+<!--                  alert("login success");-->
+<!--              } else {-->
+<!--                  alert("login failed");-->
+<!--              }-->
+<!--          }-->
+<!--      }-->
+<!--  }-->
+<!--</script>-->
+
+
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+        }
+        .left {
+            background-color: #FFF9E5;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .right {
+            background-color: #FFFFFF;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .text-orange {
+            color: #F36924;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .subtext {
+            color: #F36924;
+            font-size: 18px;
+            margin: 0;
+        }
+        .button {
+            background-color: #2A51CF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+        }
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 14px;
+            color: #A9A9A9;
+        }
+        .footer a {
+            color: #A9A9A9;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="left">
+        <p class="text-orange">Write a thank-you note</p>
+        <p class="subtext">to our babysitter for the last-minute help</p>
+    </div>
+    <div class="right">
+        <div class="button-container" style="flex-direction: row">
+            <button id="loginButton" class="button">Log in</button>
+
+            <button id="registerButton" class="button">Sign up</button>
+        </div>
+    </div>
+</div>
+<!--position: absolute; 生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位-->
+<div class="footer" style="right: 10px; position: absolute;">
+    <span>© OpenAI</span>
+    <a href="#">Terms of use</a>
+    <a href="#">Privacy policy</a>
+</div>
+</body>
+</html>
