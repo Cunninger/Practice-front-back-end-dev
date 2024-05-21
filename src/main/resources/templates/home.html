@@ -97,15 +97,16 @@
 <body>
 
 <div class="sidebar" id="sidebar">
-    <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">×</a>
-    <a href="#dashboard">仪表盘</a>
-    <a href="/uploadform">文件管理</a>
-    <a href="#users">用户管理</a>
-    <a href="#settings">设置</a>
+    <button class="open-btn" onclick="toggleSidebar()">☰☰ </button>
+<!--    <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">×</a>-->
+    <a href="#dashboard" onclick="loadContent('dashboard.html')">仪表盘</a>
+    <a href="#file-management" onclick="loadContent('uploadform.html')">文件管理</a>
+    <a href="#users" onclick="loadContent('users.html')">用户管理</a>
+    <a href="#settings" onclick="loadContent('settings.html')">设置</a>
 </div>
 
-<div class="main-content">
-    <button class="open-btn" onclick="toggleSidebar()">☰ 打开侧边栏</button>
+<div class="main-content" id="mainContent">
+<!--    <button class="open-btn" onclick="toggleSidebar()">☰ 打开侧边栏</button>-->
     <h2>后台管理系统</h2>
     <p>这是一个基本的后台管理系统页面示例。</p>
 </div>
@@ -122,10 +123,10 @@
 <script>
     function toggleSidebar() {
         var sidebar = document.getElementById("sidebar");
-        if (sidebar.style.width === "0px" || sidebar.style.width === "") {
+        if (sidebar.style.width === "50px" || sidebar.style.width === "") {
             sidebar.style.width = "250px";
         } else {
-            sidebar.style.width = "0px";
+            sidebar.style.width = "50px";
         }
     }
 
@@ -136,6 +137,18 @@
         } else {
             menu.style.display = "block";
         }
+    }
+
+    function loadContent(url) {
+        var mainContent = document.getElementById("mainContent");
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                mainContent.innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
     }
 </script>
 

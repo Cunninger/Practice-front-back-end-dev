@@ -1,51 +1,74 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>File Upload</title>
-    <!-- Add Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-</head>
-<body>
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>File Upload</title>-->
+<!--    &lt;!&ndash; Add Bootstrap CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container mt-5">-->
+<!--    &lt;!&ndash;    // 跳转至另一个页面展示文件的页面 View Files&ndash;&gt;-->
+<!--&lt;!&ndash;    //a 标签用于定义超链接，用于跳转到另一个页面&ndash;&gt;-->
+<!--    <a href="/fileList" class="btn btn-primary">View Files</a>-->
+<!--    &lt;!&ndash;    //  container类是Bootstrap的一个CSS类，用于设置容器的样式&ndash;&gt;-->
+<!--    <h1 class="text-center">File Upload</h1>-->
+<!--    <form method="POST" enctype="multipart/form-data" action="/upload" class="mt-4">-->
+<!--        &lt;!&ndash;        //  enctype属性规定在发送到服务器之前应该如何对表单数据进行编码&ndash;&gt;-->
+<!--        <div class="form-group">-->
+<!--            &lt;!&ndash;            //  form-group是一个表单组，用于包装表单控件及其标签&ndash;&gt;-->
+<!--            <label>Name:</label>-->
+<!--            <input type="text" name="name" class="form-control"/>-->
+<!--            &lt;!&ndash;            //    form-control类是Bootstrap的一个CSS类，用于设置表单控件的样式&ndash;&gt;-->
+<!--        </div>-->
+
+
+<!--        <div class="form-group">-->
+<!--            <label>Description:</label>-->
+<!--            <textarea name="description" class="form-control"></textarea>-->
+<!--            &lt;!&ndash;            // textarea标签定义多行的文本输入控件&ndash;&gt;-->
+<!--        </div>-->
+
+
+<!--        <div class="form-group">-->
+<!--            <label>File:</label>-->
+<!--            <input type="file" name="file" class="form-control-file"/>-->
+<!--            &lt;!&ndash;            //   form-control-file类是Bootstrap的一个CSS类，用于设置文件上传控件的样式&ndash;&gt;-->
+<!--        </div>-->
+<!--        <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--    </form>-->
+
+
+<!--    <div th:if="${message}" class="alert alert-success mt-4">-->
+<!--        &lt;!&ndash;        // alert alert-success类是Bootstrap的一个CSS类，用于设置成功消息的样式&ndash;&gt;-->
+<!--        <h3 th:text="${message}"></h3>-->
+<!--        &lt;!&ndash;        //    th:text属性用于设置元素的文本内容&ndash;&gt;-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; Add Bootstrap JS &ndash;&gt;-->
+<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
 <div class="container mt-5">
-    <!--    // 跳转至另一个页面展示文件的页面 View Files-->
-<!--    //a 标签用于定义超链接，用于跳转到另一个页面-->
     <a href="/fileList" class="btn btn-primary">View Files</a>
-    <!--    //  container类是Bootstrap的一个CSS类，用于设置容器的样式-->
     <h1 class="text-center">File Upload</h1>
     <form method="POST" enctype="multipart/form-data" action="/upload" class="mt-4">
-        <!--        //  enctype属性规定在发送到服务器之前应该如何对表单数据进行编码-->
         <div class="form-group">
-            <!--            //  form-group是一个表单组，用于包装表单控件及其标签-->
             <label>Name:</label>
             <input type="text" name="name" class="form-control"/>
-            <!--            //    form-control类是Bootstrap的一个CSS类，用于设置表单控件的样式-->
         </div>
-
-
         <div class="form-group">
             <label>Description:</label>
             <textarea name="description" class="form-control"></textarea>
-            <!--            // textarea标签定义多行的文本输入控件-->
         </div>
-
-
         <div class="form-group">
             <label>File:</label>
             <input type="file" name="file" class="form-control-file"/>
-            <!--            //   form-control-file类是Bootstrap的一个CSS类，用于设置文件上传控件的样式-->
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-
-
     <div th:if="${message}" class="alert alert-success mt-4">
-        <!--        // alert alert-success类是Bootstrap的一个CSS类，用于设置成功消息的样式-->
         <h3 th:text="${message}"></h3>
-        <!--        //    th:text属性用于设置元素的文本内容-->
     </div>
 </div>
-<!-- Add Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-</body>
-</html>

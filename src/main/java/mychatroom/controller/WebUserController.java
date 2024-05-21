@@ -23,25 +23,6 @@ public class WebUserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/")
-    public String first() {
-        return "first";
-    }
-
-    @GetMapping("/prelogin")
-    public String prelogin() {
-        return "prelogin";
-    }
-
-    @GetMapping("/preregister")
-    public String preregister() {
-        return "preregister";
-    }
-
-    @GetMapping("/home")
-    public String home() {
-        return "home";
-    }
 
     @PostMapping("/login")
     @ResponseBody
