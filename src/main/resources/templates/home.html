@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台管理系统</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            padding-top: 20px;
+            transition: 0.3s;
+            overflow-x: hidden;
+            z-index: 1;
+        }
+        .sidebar a {
+            padding: 15px 8px 15px 32px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+        .sidebar .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        .open-btn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+        }
+        .open-btn:hover {
+            background-color: #575757;
+        }
+        .main-content {
+            margin-left: 260px;
+            padding: 20px;
+        }
+        .top-right {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        .top-right .profile {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            position: relative;
+        }
+        .profile-menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .profile-menu a {
+            display: block;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+        }
+        .profile-menu a:hover {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+    <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">×</a>
+    <a href="#dashboard">仪表盘</a>
+    <a href="/uploadform">文件管理</a>
+    <a href="#users">用户管理</a>
+    <a href="#settings">设置</a>
+</div>
+
+<div class="main-content">
+    <button class="open-btn" onclick="toggleSidebar()">☰ 打开侧边栏</button>
+    <h2>后台管理系统</h2>
+    <p>这是一个基本的后台管理系统页面示例。</p>
+</div>
+
+<div class="top-right">
+    <div class="profile" onclick="toggleProfileMenu()">用户</div>
+    <div class="profile-menu" id="profileMenu">
+        <a href="#profile">个人中心</a>
+        <a href="#settings">设置</a>
+        <a href="#logout">退出</a>
+    </div>
+</div>
+
+<script>
+    function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        if (sidebar.style.width === "0px" || sidebar.style.width === "") {
+            sidebar.style.width = "250px";
+        } else {
+            sidebar.style.width = "0px";
+        }
+    }
+
+    function toggleProfileMenu() {
+        var menu = document.getElementById("profileMenu");
+        if (menu.style.display === "block") {
+            menu.style.display = "none";
+        } else {
+            menu.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

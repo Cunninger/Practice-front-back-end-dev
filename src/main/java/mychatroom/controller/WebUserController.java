@@ -37,6 +37,11 @@ public class WebUserController {
         return "preregister";
     }
 
+    @GetMapping("/home")
+    public String home() {
+        return "home";
+    }
+
     @PostMapping("/login")
     @ResponseBody
         // 接收json格式的参数注解是   @RequestBody

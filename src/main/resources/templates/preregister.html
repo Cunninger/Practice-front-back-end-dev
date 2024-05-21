@@ -106,7 +106,7 @@
 <body>
 <div class="container">
     <div class="logo">
-<!--        引入/static/images/openai.png图片-->
+        <!--        引入/static/images/openai.png图片-->
         <img src="/images/openai.png" alt="OpenAI">
     </div>
     <div class="title">Sign Up</div>
@@ -139,10 +139,9 @@
 </body>
 <script src="/js/config.js"></script>
 <script>
-
     document.getElementById("continueButton").addEventListener(
         "click", function () {
-            fetch(BASE_URL+"/register", {
+            fetch(BASE_URL + "/register", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -156,10 +155,11 @@
                 .then(data => {
                     console.log(data);
                     if (data.code === 200) {
-                        //跳转到uploadForm.html
-                        window.location.href = BASE_URL+"/uploadform";
+                        //弹出注册成功，跳转到登录页面
+                        alert("注册成功，请登录！");
+                        window.location.href = BASE_URL + "/prelogin";
                     } else {
-                        alert(data.message);
+                        alert("注册失败，你应该知道为什么失败");
                     }
                 })
                 .catch(error => {
