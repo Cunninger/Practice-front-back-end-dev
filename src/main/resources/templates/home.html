@@ -12,6 +12,7 @@
             background-color: #f4f4f4;
             display: flex;
         }
+
         .sidebar {
             height: 100%;
             width: 60px;
@@ -24,6 +25,7 @@
             overflow-x: hidden;
             z-index: 1;
         }
+
         .sidebar a {
             padding: 15px 8px 15px 32px;
             text-decoration: none;
@@ -34,13 +36,16 @@
             transition: 0.3s;
             margin-left: -18px; /* 调整这个值来改变元素的位置 */
         }
+
         .sidebar a span {
             margin-left: 10px;
             display: none;
         }
+
         .sidebar a:hover {
             background-color: #575757;
         }
+
         .open-btn {
             font-size: 20px;
             cursor: pointer;
@@ -49,20 +54,24 @@
             padding: 10px 15px;
             border: none;
         }
+
         .open-btn:hover {
             background-color: #575757;
         }
+
         .main-content {
             margin-left: 60px;
             padding: 20px;
             transition: margin-left 0.3s;
             width: 100%;
         }
+
         .top-right {
             position: absolute;
             top: 10px;
             right: 20px;
         }
+
         .top-right .profile {
             width: 40px;
             height: 40px;
@@ -75,6 +84,7 @@
             cursor: pointer;
             position: relative;
         }
+
         .profile-menu {
             display: none;
             position: absolute;
@@ -85,12 +95,14 @@
             border-radius: 5px;
             overflow: hidden;
         }
+
         .profile-menu a {
             display: block;
             padding: 10px;
             color: #333;
             text-decoration: none;
         }
+
         .profile-menu a:hover {
             background-color: #f4f4f4;
         }
@@ -104,10 +116,15 @@
         <img src="/images/dashboard-icon.png" alt="Dashboard" width="24" height="24">
         <span>仪表盘</span>
     </a>
-    <a href="uploadform" onclick="loadContent('uploadform.html')">
+<!--        <a href="/home/uploadform" onclick="loadContent('uploadform.html')">-->
+<!--            <img src="/images/file-icon.png" alt="File Management" width="24" height="24">-->
+<!--            <span>文件管理</span>-->
+<!--        </a>-->
+    <a href="/home/uploadform" onclick="loadContent('/home/uploadform', event)">
         <img src="/images/file-icon.png" alt="File Management" width="24" height="24">
         <span>文件管理</span>
     </a>
+
     <a href="#users" onclick="loadContent('users.html')">
         <img src="/images/users-icon.png" alt="Users" width="24" height="24">
         <span>用户管理</span>
@@ -157,7 +174,20 @@
         }
     }
 
-    function loadContent(url) {
+    // function loadContent(url) {
+    //     var mainContent = document.getElementById("mainContent");
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open('GET', url, true);
+    //     xhr.onreadystatechange = function () {
+    //         if (xhr.readyState === 4 && xhr.status === 200) {
+    //             mainContent.innerHTML = xhr.responseText;
+    //         }
+    //     };
+    //     xhr.send();
+    // }
+
+    function loadContent(url, event) {
+        event.preventDefault();  // 阻止<a>标签的默认行为
         var mainContent = document.getElementById("mainContent");
         var xhr = new XMLHttpRequest();
         xhr.open('GET', url, true);

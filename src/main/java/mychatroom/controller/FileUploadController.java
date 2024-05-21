@@ -5,12 +5,14 @@ package mychatroom.controller;
  * 日期：2024/5/20 下午1:32
  */
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,13 +20,12 @@ import java.nio.file.Paths;
 
 @Controller
 public class FileUploadController {
-    private static String UPLOADED_FOLDER = "file/doc";
+    private static String UPLOADED_FOLDER = "file/";
+
+    @Value("${BASE_URL}")
+    private String BASE_URL;
 
 
-    @GetMapping("/uploadform")
-    public String index() {
-        return "uploadForm";
-    }
 
     @PostMapping("/upload")
     public String singleFileUpload(@RequestParam("file") MultipartFile file,
@@ -34,7 +35,7 @@ public class FileUploadController {
 
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
-            return "redirect:http://localhost:8080/uploadform";
+            return "redirect:" + BASE_URL + "/home/uploadform";
         }
 
         try {
@@ -52,6 +53,6 @@ public class FileUploadController {
             e.printStackTrace();
         }
 
-        return "redirect:http://localhost:8080/uploadform";
+        return "redirect:" + BASE_URL + "/home/uploadform";
     }
 }

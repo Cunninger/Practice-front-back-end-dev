@@ -20,6 +20,7 @@ public class BaseApi {
         return "prelogin";
     }
 
+
     @GetMapping("/preregister")
     public String preregister() {
         return "preregister";
@@ -28,5 +29,11 @@ public class BaseApi {
     @GetMapping("/home")
     public String home() {
         return "home";
+    }
+
+
+    @GetMapping("/home/uploadform")
+    public String index() {
+        return "uploadForm";
     }
 }

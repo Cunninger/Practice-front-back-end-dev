@@ -29,7 +29,6 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    // TODO 注册
     @Override
     public void register(String username, String password) {
         // 校验用户名是否存在
