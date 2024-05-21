@@ -64,10 +64,12 @@
             height: 100vh;
             overflow: hidden;
         }
+
         .container {
             display: flex;
             flex: 1;
         }
+
         .left {
             background-color: #FFF9E5;
             flex: 1;
@@ -76,6 +78,7 @@
             align-items: center;
             flex-direction: column;
         }
+
         .right {
             background-color: #FFFFFF;
             flex: 1;
@@ -84,17 +87,20 @@
             align-items: center;
             flex-direction: column;
         }
+
         .text-orange {
             color: #F36924;
             font-size: 24px;
             font-weight: bold;
             margin: 0;
         }
+
         .subtext {
             color: #F36924;
             font-size: 18px;
             margin: 0;
         }
+
         .button {
             background-color: #2A51CF;
             color: white;
@@ -104,16 +110,19 @@
             font-size: 16px;
             cursor: pointer;
         }
+
         .button-container {
             display: flex;
             flex-direction: column;
         }
+
         .footer {
             position: absolute;
             bottom: 10px;
             font-size: 14px;
             color: #A9A9A9;
         }
+
         .footer a {
             color: #A9A9A9;
             text-decoration: none;
@@ -131,7 +140,7 @@
         <div class="button-container" style="flex-direction: row">
             <button id="loginButton" class="button">Log in</button>
 
-            <button id="registerButton" class="button">Sign up</button>
+            <button id="signupButton" class="button">Sign up</button>
         </div>
     </div>
 </div>
@@ -142,4 +151,27 @@
     <a href="#">Privacy policy</a>
 </div>
 </body>
+<script>
+    var loginButton = document.getElementById('loginButton');
+    var signupButton = document.getElementById('signupButton');
+    if (loginButton) {
+        console.log('loginButton is found');
+        loginButton.addEventListener('click', function () {
+            console.log('loginButton is clicked');
+            window.location.href = 'prelogin';
+        });
+    } else {
+        console.log('loginButton is not found');
+    }
+
+    if (signupButton) {
+        console.log('signupButton is found');
+        signupButton.addEventListener('click', function () {
+            console.log('signupButton is clicked');
+            window.location.href = 'preregister';
+        });
+    } else {
+        console.log('signupButton is not found');
+    }
+</script>
 </html>

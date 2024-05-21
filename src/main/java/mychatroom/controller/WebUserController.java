@@ -1,7 +1,8 @@
 package mychatroom.controller;
 
-import mychatroom.pojo.User;
-import org.springframework.boot.autoconfigure.batch.BatchProperties;
+import mychatroom.entity.pojo.User;
+import mychatroom.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,10 +19,22 @@ import java.util.Map;
  */
 @Controller
 public class WebUserController {
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/")
     public String first() {
         return "first";
+    }
+
+    @GetMapping("/prelogin")
+    public String prelogin() {
+        return "prelogin";
+    }
+
+    @GetMapping("/preregister")
+    public String preregister() {
+        return "preregister";
     }
 
     @PostMapping("/login")
@@ -32,9 +45,29 @@ public class WebUserController {
         String password = user.getPassword();
         // 查redis数据库中所有的键
         Map<String, Integer> response = new HashMap<>();
+        User user1 = userService.login(username, password);
+        if (user1 != null) {
+            response.put("code", 200);
+        } else {
+            response.put("code", 500);
+        }
+        return ResponseEntity.ok(response);
+    }
 
-            return null;
+    @PostMapping("/register")
+    @ResponseBody
+    ResponseEntity<Map<String, Integer>> register(@RequestBody User user) {
+        String username = user.getUsername();
+        String password = user.getPassword();
 
+        Map<String, Integer> response = new HashMap<>();
+        User user1 = userService.register(username, password);
+        if (user1 != null) {
+            response.put("code", 200);
+        } else {
+            response.put("code", 500);
+        }
+        return ResponseEntity.ok(response);
     }
 
 }

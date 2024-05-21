@@ -21,7 +21,7 @@ public class FileUploadController {
     private static String UPLOADED_FOLDER = "file/doc";
 
 
-    @GetMapping("/doc")
+    @GetMapping("/uploadform")
     public String index() {
         return "uploadForm";
     }
@@ -34,7 +34,7 @@ public class FileUploadController {
 
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
-            return "redirect:/";
+            return "redirect:http://localhost:8080/uploadform";
         }
 
         try {
@@ -52,6 +52,6 @@ public class FileUploadController {
             e.printStackTrace();
         }
 
-        return "redirect:/";
+        return "redirect:http://localhost:8080/uploadform";
     }
 }

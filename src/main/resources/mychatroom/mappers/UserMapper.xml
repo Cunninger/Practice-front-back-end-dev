@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mychatroom.mappers.UserMapper">
+
+
+    <resultMap id="base_result_map" type="mychatroom.entity.pojo.User">
+        <id column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="join_time" property="joinTime"/>
+        <result column="last_login_time" property="lastLoginTime"/>
+    </resultMap>
+
+    <sql id="base_column_list">
+        username
+        , password, join_time, last_login_time
+    </sql>
+
+    <insert id="insert" parameterType="mychatroom.entity.pojo.User">
+        INSERT INTO User (username, password, joinTime, lastLoginTime)
+        VALUES (#{username}, #{password}, #{joinTime}, #{lastLoginTime})
+    </insert>
+
+    <update id="updateByUsername" parameterType="mychatroom.entity.pojo.User">
+        UPDATE User
+        SET password      = #{password},
+            joinTime      = #{joinTime},
+            lastLoginTime = #{lastLoginTime}
+        WHERE username = #{username}
+    </update>
+
+    <delete id="deleteByUsername" parameterType="string">
+        DELETE
+        FROM User
+        WHERE username = #{username}
+    </delete>
+
+    <select id="selectByUsername" resultMap="base_result_map">
+        SELECT
+        <include refid="base_column_list"/>
+        FROM User
+        WHERE username = #{username}
+    </select>
+
+</mapper>

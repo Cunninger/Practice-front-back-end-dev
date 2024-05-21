@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <style>
         body {
             margin: 0;
@@ -14,21 +14,26 @@
             height: 100vh;
             background-color: #FFFFFF;
         }
+
         .container {
             text-align: center;
             width: 300px;
         }
+
         .logo {
             margin-bottom: 20px;
         }
+
         .logo img {
             width: 50px;
         }
+
         .title {
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 20px;
         }
+
         .input-field {
             width: 100%;
             padding: 10px;
@@ -36,6 +41,7 @@
             border: 1px solid #CCCCCC;
             border-radius: 5px;
         }
+
         .button {
             width: 100%;
             padding: 10px;
@@ -47,19 +53,23 @@
             font-size: 16px;
             margin-bottom: 20px;
         }
+
         .signup {
             font-size: 14px;
             margin-bottom: 20px;
         }
+
         .signup a {
             color: #00B67A;
             text-decoration: none;
         }
+
         .or {
             font-size: 14px;
             color: #888888;
             margin: 10px 0;
         }
+
         .alt-login {
             width: 100%;
             padding: 10px;
@@ -73,16 +83,19 @@
             margin-bottom: 10px;
             background-color: white;
         }
+
         .alt-login img {
             width: 20px;
             margin-right: 10px;
         }
+
         .footer {
             position: absolute;
             bottom: 10px;
             font-size: 14px;
             color: #A9A9A9;
         }
+
         .footer a {
             color: #A9A9A9;
             text-decoration: none;
@@ -95,15 +108,17 @@
     <div class="logo">
         <img src="	https://auth.openai.com/assets/openai-logo-DmWoKcI3.svg" alt="Logo">
     </div>
-    <div class="title">Welcome back</div>
-    <input type="email" class="input-field" placeholder="Email address">
-    <button class="button">Continue</button>
+    <div class="title">Sign Up</div>
+    <input type="text" class="input-field" placeholder="username">
+    <input type="password" class="input-field" placeholder="password">
+
+    <button id="continueButton" class="button">Sign Up</button>
     <div class="signup">
-        Don't have an account? <a href="#">Sign Up</a>
+        Aready have an account ? <a href="http://localhost:8080/prelogin">Login In</a>
     </div>
     <div class="or">OR</div>
     <div class="alt-login">
-        <img src="https://auth.openai.com/assets/google-logo-NePEveMl.svg" alt="Google">
+        <img src="https://auth.openai.com/assets/openai-logo-DmWoKcI3.svg" alt="Google">
         Continue with Google
     </div>
     <div class="alt-login">
@@ -121,4 +136,34 @@
     <a href="#">Privacy policy</a>
 </div>
 </body>
+
+<script src="../static/js/config.js">
+
+    document.getElementById("continueButton").addEventListener(
+        "click", function () {
+            fetch(BASE_URL+"/register", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: document.querySelector("input[type='text']").value,
+                    password: document.querySelector("input[type='password']").value
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.code === 200) {
+                        //跳转到uploadForm.html
+                        window.location.href = BASE_URL+"/uploadform";
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        });
+</script>
 </html>

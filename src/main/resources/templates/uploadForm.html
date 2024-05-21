@@ -7,40 +7,41 @@
 </head>
 <body>
 <div class="container mt-5">
-<!--    // 跳转至另一个页面展示文件的页面 View Files-->
-    <a href="/fileList" class="btn btn-primary">View Files</a>//a 标签用于定义超链接，用于跳转到另一个页面
-<!--    //  container类是Bootstrap的一个CSS类，用于设置容器的样式-->
+    <!--    // 跳转至另一个页面展示文件的页面 View Files-->
+<!--    //a 标签用于定义超链接，用于跳转到另一个页面-->
+    <a href="/fileList" class="btn btn-primary">View Files</a>
+    <!--    //  container类是Bootstrap的一个CSS类，用于设置容器的样式-->
     <h1 class="text-center">File Upload</h1>
     <form method="POST" enctype="multipart/form-data" action="/upload" class="mt-4">
-<!--        //  enctype属性规定在发送到服务器之前应该如何对表单数据进行编码-->
+        <!--        //  enctype属性规定在发送到服务器之前应该如何对表单数据进行编码-->
         <div class="form-group">
-<!--            //  form-group是一个表单组，用于包装表单控件及其标签-->
+            <!--            //  form-group是一个表单组，用于包装表单控件及其标签-->
             <label>Name:</label>
-            <input type="text" name="name" class="form-control" />
-<!--            //    form-control类是Bootstrap的一个CSS类，用于设置表单控件的样式-->
+            <input type="text" name="name" class="form-control"/>
+            <!--            //    form-control类是Bootstrap的一个CSS类，用于设置表单控件的样式-->
         </div>
 
 
         <div class="form-group">
             <label>Description:</label>
             <textarea name="description" class="form-control"></textarea>
-<!--            // textarea标签定义多行的文本输入控件-->
+            <!--            // textarea标签定义多行的文本输入控件-->
         </div>
 
 
         <div class="form-group">
             <label>File:</label>
-            <input type="file" name="file" class="form-control-file" />
-<!--            //   form-control-file类是Bootstrap的一个CSS类，用于设置文件上传控件的样式-->
+            <input type="file" name="file" class="form-control-file"/>
+            <!--            //   form-control-file类是Bootstrap的一个CSS类，用于设置文件上传控件的样式-->
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
 
     <div th:if="${message}" class="alert alert-success mt-4">
-<!--        // alert alert-success类是Bootstrap的一个CSS类，用于设置成功消息的样式-->
+        <!--        // alert alert-success类是Bootstrap的一个CSS类，用于设置成功消息的样式-->
         <h3 th:text="${message}"></h3>
-<!--        //    th:text属性用于设置元素的文本内容-->
+        <!--        //    th:text属性用于设置元素的文本内容-->
     </div>
 </div>
 <!-- Add Bootstrap JS -->
