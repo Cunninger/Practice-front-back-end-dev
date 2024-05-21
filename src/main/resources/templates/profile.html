@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e9ecef;
+            padding: 15px;
+            background-color: #f8f9fa;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            padding: 15px;
+            display: flex;
+            justify-content: flex-end;
+            border-top: 1px solid #e9ecef;
+            background-color: #f8f9fa;
+        }
+
+        .avatar-upload {
+            position: relative;
+            max-width: 205px;
+            margin: 50px auto;
+        }
+
+        .avatar-edit {
+            position: absolute;
+            right: 12px;
+            z-index: 1;
+            top: 10px;
+        }
+
+        .avatar-edit input {
+            display: none;
+        }
+
+        .avatar-edit input + label {
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+            margin-bottom: 0;
+            border-radius: 100%;
+            background: #FFFFFF;
+            border: 1px solid transparent;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            font-weight: normal;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .avatar-edit input + label:hover {
+            background: #f1f1f1;
+            border-color: #d6d6d6;
+        }
+
+        .avatar-preview {
+            width: 192px;
+            height: 192px;
+            position: relative;
+            border-radius: 100%;
+            border: 6px solid #F8F8F8;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .avatar-preview > div {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="profileModalLabel">个人中心</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="avatar-upload">
+                    <div class="avatar-edit">
+                        <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg"/>
+                        <label for="imageUpload"></label>
+                    </div>
+                    <div class="avatar-preview">
+                        <div id="imagePreview" style="background-image: url('https://via.placeholder.com/150');"></div>
+                    </div>
+                </div>
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label for="username">用户名</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label for="oldPassword">旧密码</label>
+                        <input type="password" class="form-control" id="oldPassword" placeholder="Enter old password">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">新密码</label>
+                        <input type="password" class="form-control" id="newPassword" placeholder="Enter new password">
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="updateProfile()">提交</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#imageUpload').change(function () {
+            readURL(this);
+        });
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                $('.profile').css('background-image', 'url(' + e.target.result + ')');
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function updateProfile() {
+        var username = document.getElementById("username").value;
+        var oldPassword = document.getElementById("oldPassword").value;
+        var newPassword = document.getElementById("newPassword").value;
+
+        // Validate and update profile
+        // For demonstration, we're just logging the values
+        console.log("Username:", username);
+        console.log("Old Password:", oldPassword);
+        console.log("New Password:", newPassword);
+
+        // Perform AJAX requests to update the profile as needed
+        // Example:
+        $.post('/updateProfile', {username, oldPassword, newPassword}, function (response) {
+            if (response.success) {
+                alert("Profile updated successfully!");
+                // Redirect to login page
+                window.location.href = '/login';
+            } else {
+                alert("Error updating profile: " + response.message);
+            }
+        });
+
+        // Simulate successful update and prompt for re-login
+        setTimeout(function () {
+            alert("身份信息已过期，请重新登录");
+            window.location.href = '/login';
+        }, 500);
+    }
+</script>
+
+</body>
+</html>

@@ -47,4 +47,17 @@ public class UserServiceImpl implements UserService {
         userMapper.insert(user);
     }
 
+    @Override
+    public void updateProfile(String username, String oldPassword, String newPassword) {
+        User user = (User) userMapper.selectByUsername(username);
+        if (user == null) {
+            throw new BussinessException("用户不存在");
+        }
+        if (!user.getPassword().equals(oldPassword)) {
+            throw new BussinessException("旧密码错误");
+        }
+        user.setPassword(newPassword);
+        userMapper.update(user);
+    }
+
 }

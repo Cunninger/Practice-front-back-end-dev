@@ -36,4 +36,9 @@ public class BaseApi {
     public String index() {
         return "uploadForm";
     }
+
+    @GetMapping("/home/profile")
+    public String profile() {
+        return "profile";
+    }
 }

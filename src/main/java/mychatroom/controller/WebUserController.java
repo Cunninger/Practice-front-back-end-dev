@@ -1,5 +1,6 @@
 package mychatroom.controller;
 
+import mychatroom.entity.foredto.UpdateProfileRequestDto;
 import mychatroom.entity.pojo.User;
 import mychatroom.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +55,19 @@ public class WebUserController {
         response.put("code", 200);
         return ResponseEntity.ok(response);
     }
+
+    @PostMapping("/updateProfile")
+    ResponseEntity<Map<String, Integer>> updateProfile(@RequestBody UpdateProfileRequestDto updateProfileRequestDto) {
+        // 模拟检查旧密码是否正确
+        String username = updateProfileRequestDto.getUsername();
+        String oldPassword = updateProfileRequestDto.getOldPassword();
+        String newPassword = updateProfileRequestDto.getNewPassword();
+        userService.updateProfile(username, oldPassword, newPassword);
+        Map<String, Integer> response = new HashMap<>();
+        response.put("code", 200);
+        return ResponseEntity.ok(response);
+    }
+
+
 
 }

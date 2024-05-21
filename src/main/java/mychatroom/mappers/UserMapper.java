@@ -26,4 +26,6 @@ public interface UserMapper<T> {
 
 
     void insert(User user);
+
+    void update(User user);
 }

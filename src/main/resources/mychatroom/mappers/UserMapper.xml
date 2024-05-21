@@ -28,6 +28,13 @@
             last_login_time = #{lastLoginTime}
         WHERE username = #{username}
     </update>
+    <update id="update" parameterType="mychatroom.entity.pojo.User">
+        UPDATE User
+        SET password      = #{password},
+            join_time      = #{joinTime},
+            last_login_time = #{lastLoginTime}
+        WHERE username = #{username}
+    </update>
 
     <delete id="deleteByUsername" parameterType="string">
         DELETE
