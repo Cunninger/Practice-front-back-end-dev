@@ -218,6 +218,33 @@
         };
         xhr.send();
     }
+
+
+    function updateProfile() {
+        var username = document.getElementById("username").value;
+        var oldPassword = document.getElementById("oldPassword").value;
+        var newPassword = document.getElementById("newPassword").value;
+
+        var data = {username, oldPassword, newPassword};
+
+        fetch('/updateProfile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(response => {
+                if (response.success) {
+                    alert("Profile updated successfully!");
+                    window.location.href = '/login';
+                } else {
+                    alert("Error updating profile: " + response.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
 </script>
 
 </body>

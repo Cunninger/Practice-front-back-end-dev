@@ -149,35 +149,39 @@
         }
     }
 
-    function updateProfile() {
-        var username = document.getElementById("username").value;
-        var oldPassword = document.getElementById("oldPassword").value;
-        var newPassword = document.getElementById("newPassword").value;
+    // function updateProfile() {
+    //     var username = document.getElementById("username").value;
+    //     var oldPassword = document.getElementById("oldPassword").value;
+    //     var newPassword = document.getElementById("newPassword").value;
+    //
+    //     // Validate and update profile
+    //     // For demonstration, we're just logging the values
+    //     console.log("Username:", username);
+    //     console.log("Old Password:", oldPassword);
+    //     console.log("New Password:", newPassword);
+    //
+    //     // Perform AJAX requests to update the profile as needed
+    //     // Example:
+    //
+    //
+    //     $.post('/updateProfile', {username, oldPassword, newPassword}, function (response) {
+    //         if (response.success) {
+    //             alert("Profile updated successfully!");
+    //             // Redirect to login page
+    //             window.location.href = '/login';
+    //         } else {
+    //             alert("Error updating profile: " + response.message);
+    //         }
+    //     });
+    //
+    //     // Simulate successful update and prompt for re-login
+    //     setTimeout(function () {
+    //         alert("身份信息已过期，请重新登录");
+    //         window.location.href = '/login';
+    //     }, 500);
+    // }
 
-        // Validate and update profile
-        // For demonstration, we're just logging the values
-        console.log("Username:", username);
-        console.log("Old Password:", oldPassword);
-        console.log("New Password:", newPassword);
 
-        // Perform AJAX requests to update the profile as needed
-        // Example:
-        $.post('/updateProfile', {username, oldPassword, newPassword}, function (response) {
-            if (response.success) {
-                alert("Profile updated successfully!");
-                // Redirect to login page
-                window.location.href = '/login';
-            } else {
-                alert("Error updating profile: " + response.message);
-            }
-        });
-
-        // Simulate successful update and prompt for re-login
-        setTimeout(function () {
-            alert("身份信息已过期，请重新登录");
-            window.location.href = '/login';
-        }, 500);
-    }
 </script>
 
 </body>

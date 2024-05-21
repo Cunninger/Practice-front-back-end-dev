@@ -7,12 +7,11 @@
 </head>
 
 
-
 <body>
 <div class="container">
     <h1>File List</h1>
     <ul class="list-group">
-<!--           list-group-item是Bootstrap的一个CSS类，用于设置列表组的样式-->
+        <!--           list-group-item是Bootstrap的一个CSS类，用于设置列表组的样式-->
         <li th:each="file : ${files}" class="list-group-item" th:text="${file}"></li>
     </ul>
 </div>
@@ -20,7 +19,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
-
 
 
 </html>
