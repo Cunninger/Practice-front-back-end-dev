@@ -10,17 +10,16 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            display: flex;
         }
         .sidebar {
             height: 100%;
-            width: 60px;
+            width: 250px;
             position: fixed;
             top: 0;
             left: 0;
             background-color: #333;
             padding-top: 20px;
-            transition: width 0.3s;
+            transition: 0.3s;
             overflow-x: hidden;
             z-index: 1;
         }
@@ -29,17 +28,18 @@
             text-decoration: none;
             font-size: 18px;
             color: #fff;
-            display: flex;
-            align-items: center;
+            display: block;
             transition: 0.3s;
-            margin-left: -18px; /* 调整这个值来改变元素的位置 */
-        }
-        .sidebar a span {
-            margin-left: 10px;
-            display: none;
         }
         .sidebar a:hover {
             background-color: #575757;
+        }
+        .sidebar .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 36px;
+            margin-left: 50px;
         }
         .open-btn {
             font-size: 20px;
@@ -53,10 +53,8 @@
             background-color: #575757;
         }
         .main-content {
-            margin-left: 60px;
+            margin-left: 260px;
             padding: 20px;
-            transition: margin-left 0.3s;
-            width: 100%;
         }
         .top-right {
             position: absolute;
@@ -99,22 +97,16 @@
 <body>
 
 <div class="sidebar" id="sidebar">
-    <button class="open-btn" onclick="toggleSidebar()">☰</button>
-    <a href="#dashboard" onclick="loadContent('dashboard.html')">
-        <img src="/images/dashboard-icon.png" alt="Dashboard" width="24" height="24">
-        <span>仪表盘</span>
-    </a>
-    <a href="uploadform" onclick="loadContent('uploadform.html')">
-        <img src="/images/file-icon.png" alt="File Management" width="24" height="24">
-        <span>文件管理</span>
-    </a>
-    <a href="#users" onclick="loadContent('users.html')">
-        <img src="/images/users-icon.png" alt="Users" width="24" height="24">
-        <span>用户管理</span>
-    </a>
+    <button class="open-btn" onclick="toggleSidebar()">☰☰ </button>
+    <!--    <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">×</a>-->
+    <a href="#dashboard" onclick="loadContent('dashboard.html')">仪表盘</a>
+    <a href="#file-management" onclick="loadContent('uploadform.html')">文件管理</a>
+    <a href="#users" onclick="loadContent('users.html')">用户管理</a>
+    <a href="#settings" onclick="loadContent('settings.html')">设置</a>
 </div>
 
 <div class="main-content" id="mainContent">
+    <!--    <button class="open-btn" onclick="toggleSidebar()">☰ 打开侧边栏</button>-->
     <h2>后台管理系统</h2>
     <p>这是一个基本的后台管理系统页面示例。</p>
 </div>
@@ -131,20 +123,10 @@
 <script>
     function toggleSidebar() {
         var sidebar = document.getElementById("sidebar");
-        var mainContent = document.getElementById("mainContent");
-        var links = sidebar.getElementsByTagName("a");
-        if (sidebar.style.width === "60px" || sidebar.style.width === "") {
+        if (sidebar.style.width === "50px" || sidebar.style.width === "") {
             sidebar.style.width = "250px";
-            mainContent.style.marginLeft = "260px"; // main-content移动到右边
-            for (var i = 0; i < links.length; i++) {
-                links[i].getElementsByTagName("span")[0].style.display = "inline";
-            }
         } else {
-            sidebar.style.width = "60px";
-            mainContent.style.marginLeft = "70px"; // main-content移动到左边
-            for (var i = 0; i < links.length; i++) {
-                links[i].getElementsByTagName("span")[0].style.display = "none";
-            }
+            sidebar.style.width = "50px";
         }
     }
 

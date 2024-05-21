@@ -10,25 +10,26 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            display: flex;
         }
         .sidebar {
             height: 100%;
-            width: 60px;
+            width: 50px;
             position: fixed;
             top: 0;
             left: 0;
             background-color: #333;
             padding-top: 20px;
-            transition: width 0.3s;
+            transition: 0.3s;
             overflow-x: hidden;
             z-index: 1;
         }
+        /*改变侧边栏图标的偏移*/
         .sidebar a {
             padding: 15px 8px 15px 32px;
             text-decoration: none;
             font-size: 18px;
             color: #fff;
+            /*display bloack->flex 让字体消失*/
             display: flex;
             align-items: center;
             transition: 0.3s;
@@ -40,6 +41,13 @@
         }
         .sidebar a:hover {
             background-color: #575757;
+        }
+        .sidebar .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 36px;
+            margin-left: 50px;
         }
         .open-btn {
             font-size: 20px;
@@ -55,8 +63,6 @@
         .main-content {
             margin-left: 60px;
             padding: 20px;
-            transition: margin-left 0.3s;
-            width: 100%;
         }
         .top-right {
             position: absolute;
@@ -101,7 +107,7 @@
 <div class="sidebar" id="sidebar">
     <button class="open-btn" onclick="toggleSidebar()">☰</button>
     <a href="#dashboard" onclick="loadContent('dashboard.html')">
-        <img src="/images/dashboard-icon.png" alt="Dashboard" width="24" height="24">
+        <img src="/images/dashboard-icon.png" alt="Dashboard" width="24" height="24" style="left: auto">
         <span>仪表盘</span>
     </a>
     <a href="uploadform" onclick="loadContent('uploadform.html')">
@@ -112,6 +118,10 @@
         <img src="/images/users-icon.png" alt="Users" width="24" height="24">
         <span>用户管理</span>
     </a>
+<!--    <a href="#settings" onclick="loadContent('settings.html')">-->
+<!--        <img src="settings-icon.png" alt="Settings" width="24" height="24">-->
+<!--        <span>设置</span>-->
+<!--    </a>-->
 </div>
 
 <div class="main-content" id="mainContent">
@@ -131,17 +141,14 @@
 <script>
     function toggleSidebar() {
         var sidebar = document.getElementById("sidebar");
-        var mainContent = document.getElementById("mainContent");
         var links = sidebar.getElementsByTagName("a");
         if (sidebar.style.width === "60px" || sidebar.style.width === "") {
             sidebar.style.width = "250px";
-            mainContent.style.marginLeft = "260px"; // main-content移动到右边
             for (var i = 0; i < links.length; i++) {
                 links[i].getElementsByTagName("span")[0].style.display = "inline";
             }
         } else {
             sidebar.style.width = "60px";
-            mainContent.style.marginLeft = "70px"; // main-content移动到左边
             for (var i = 0; i < links.length; i++) {
                 links[i].getElementsByTagName("span")[0].style.display = "none";
             }
