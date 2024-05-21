@@ -61,12 +61,10 @@ public class WebUserController {
         String password = user.getPassword();
 
         Map<String, Integer> response = new HashMap<>();
-        User user1 = userService.register(username, password);
-        if (user1 != null) {
-            response.put("code", 200);
-        } else {
-            response.put("code", 500);
-        }
+        userService.register(username, password);
+
+        // 返回注册成功
+        response.put("code", 200);
         return ResponseEntity.ok(response);
     }
 

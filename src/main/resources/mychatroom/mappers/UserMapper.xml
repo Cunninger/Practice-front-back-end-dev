@@ -17,15 +17,15 @@
     </sql>
 
     <insert id="insert" parameterType="mychatroom.entity.pojo.User">
-        INSERT INTO User (username, password, joinTime, lastLoginTime)
+        INSERT INTO User (username, password, join_time, last_login_time)
         VALUES (#{username}, #{password}, #{joinTime}, #{lastLoginTime})
     </insert>
 
     <update id="updateByUsername" parameterType="mychatroom.entity.pojo.User">
         UPDATE User
         SET password      = #{password},
-            joinTime      = #{joinTime},
-            lastLoginTime = #{lastLoginTime}
+            join_time      = #{joinTime},
+            last_login_time = #{lastLoginTime}
         WHERE username = #{username}
     </update>
 

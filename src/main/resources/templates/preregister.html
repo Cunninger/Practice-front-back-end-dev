@@ -106,7 +106,8 @@
 <body>
 <div class="container">
     <div class="logo">
-        <img src="	https://auth.openai.com/assets/openai-logo-DmWoKcI3.svg" alt="Logo">
+<!--        引入/static/images/openai.png图片-->
+        <img src="/images/openai.png" alt="OpenAI">
     </div>
     <div class="title">Sign Up</div>
     <input type="text" class="input-field" placeholder="username">
@@ -118,7 +119,7 @@
     </div>
     <div class="or">OR</div>
     <div class="alt-login">
-        <img src="https://auth.openai.com/assets/openai-logo-DmWoKcI3.svg" alt="Google">
+        <img src="/images/google.png" alt="Google">
         Continue with Google
     </div>
     <div class="alt-login">
@@ -136,8 +137,8 @@
     <a href="#">Privacy policy</a>
 </div>
 </body>
-
-<script src="../static/js/config.js">
+<script src="/js/config.js"></script>
+<script>
 
     document.getElementById("continueButton").addEventListener(
         "click", function () {
